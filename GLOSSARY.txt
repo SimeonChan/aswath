@@ -1,0 +1,16 @@
+cfg description
+
+rgr revenue growth rate
+taxr tax rate
+scr sales capital ratio
+nol net operating losses
+coc cost of capital
+
+fail.m failure model i.e. how to value the business in event of failure:
+   B book value of company
+   V Estimated fair value of company
+fail.p probability of failure
+fail.dp distress proceeds as a percentage of book or fair value
+
+
+nos number of shares
