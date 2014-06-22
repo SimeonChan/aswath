@@ -10,6 +10,7 @@ associate with all DCF worksheets.
 
 The 3m 2007 can be downloaded from http://media.corporate-ir.net/media_files/irol/80/80574/annualreport/2007_Annual_Report.pdf
 
+For reading DVI files, I recommend using Yap on Windows 7
 
 
 Created 03-May-2014

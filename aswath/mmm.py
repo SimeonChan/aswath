@@ -2,6 +2,26 @@ class Mmm:
 	def __init__(self):
 		pass
 
+	def defaults01(self):
+		"""Defaults for 22-Jun-2014"""
+		self.rf = 0.0295
+		self.p  = 0.0496
+		self.beta = 1.0
+
+		self.a0 = 1.0 # this allows you to calculate a PE ratio
+		
+
+	def sal_precalcs(self):
+		"""Precalculations for example 2"""
+		self.n = 5
+		self.theta1 = 1 - 1/self.omega
+		self.g1 = self.rho * self.omega
+		self.h1 = self.rf + self.beta * self.rho
+		self.r = (1+self.g1)/(1+self.h1)
+
+		self.ct = self.rf + self.p
+		self.gt = self.rf # set terminal growth rate to the same as the risk-free rate
+
 	def calc(self):
 		self.p1 = self.a0 *(1-self.theta1) * self.r * (1-self.r**self.n) / (1-self.r)
 		self.pt0 = self.a0* self.r**self.n * (1+self.gt)/self.ct
@@ -33,5 +53,23 @@ Gives the right answer at 21-Jun-2014
 	print(m.__dict__)
 
 
+def example2():
+	"""Valuation of SAL in the document"""
+	m = Mmm()
+	m.defaults01()
+	m.beta = 0.2114 # per Investors Chronicle 22-Jun-2014
+	m.omega = 2.1 # dividend cover
+	m.rho = 0.1968
+	m.sal_precalcs()
+	m.a0 = 8.98/m.omega
+	m.calc()
+	print(m.p1, m.pt0, m.p0)
+	print(m.__dict__)
+
+
 if __name__ == "__main__":
 	example1()
+	print("Example 2")
+	example2()
+
+
