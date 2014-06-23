@@ -8,7 +8,7 @@ class Mmm:
 		self.p  = 0.0496
 		self.beta = 1.0
 
-		self.a0 = 1.0 # this allows you to calculate a PE ratio
+		#self.a0 = 1.0 # this allows you to calculate a PE ratio
 		
 
 	def sal_precalcs(self):
@@ -19,6 +19,7 @@ class Mmm:
 		self.h1 = self.rf + self.beta * self.rho
 		self.r = (1+self.g1)/(1+self.h1)
 
+		self.a0 = 1/self.omega
 		self.ct = self.rf + self.p
 		self.gt = self.rf # set terminal growth rate to the same as the risk-free rate
 
