@@ -5,7 +5,7 @@ class Mmm:
 	def defaults01(self):
 		"""Defaults for 22-Jun-2014"""
 		self.rf = 0.0295
-		self.p  = 0.0496
+		self.erp  = 0.0496 # equity risk premium
 		self.beta = 1.0
 
 		#self.a0 = 1.0 # this allows you to calculate a PE ratio
@@ -16,11 +16,11 @@ class Mmm:
 		self.n = 5
 		self.theta1 = 1 - 1/self.omega
 		self.g1 = self.rho * self.theta1
-		self.h1 = self.rf + self.beta * self.rho
+		self.h1 = self.rf + self.beta * self.erp
 		self.r = (1+self.g1)/(1+self.h1)
 
 		#self.a0 = 1/self.omega
-		self.ct = self.rf + self.p
+		self.ct = self.rf + self.erp
 		self.gt = self.rf # set terminal growth rate to the same as the risk-free rate
 
 	def calc(self):

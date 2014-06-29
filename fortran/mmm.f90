@@ -2,7 +2,10 @@ PROGRAM mmm
 implicit none
 
 !real, parameter:: rf = 0.0295, beta = 0.2114, erp = 0.0791
-real :: rf = 0.0295, beta = 0.2114, erp = 0.0791
+real :: rf = 0.0295, erp = 0.0496
+real :: beta 
+
+
 real, parameter :: roe = 0.1968, dcov = 2.1, eps0 = 8.98
 
 !real omega, rho
@@ -10,6 +13,12 @@ real, parameter :: roe = 0.1968, dcov = 2.1, eps0 = 8.98
 
 ! sensible defaults
 real, parameter::  n = 5.0
+
+! set these intitial values
+beta = 0.2114
+!beta = 1
+
+
 
 ! intermediate calculations
 real, parameter :: theta1 = 1 - 1/dcov,  g1 = roe *theta1
@@ -20,21 +29,24 @@ real ct
 real p1, pt0, p0
 
 real :: h1
+real :: divs(1:100) ! dividends
 h1 = rf + beta * erp
 
 
-
+print *, 'g1', g1
 r = (1+g1)/(1+h1)
 print *, 'r', r, 1/r
-do i = 1, 5
-	print *, eps0 * r ** i * theta1
+do i = 1, int(n)
+	divs(i) = eps0 * r ** real(i) * (1-theta1)
+	print *, divs(i)
 end do
-p1 = eps0 *(1-theta1)*r * (1-r**n)
+print *, 'p1: sum of divs 1:n', sum(divs(1:5)) ! should equal p1
+p1 = eps0 *(1-theta1)*r * (1-r**n)/(1-r)
 
 gt = rf
 pt0 = eps0 * r**n * (1+gt)/ct
 p0 = p1+pt0
-print *, p1, pt0, p0
+print *, 'p1', p1, pt0, p0
 
 
 
