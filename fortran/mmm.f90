@@ -2,24 +2,25 @@ PROGRAM mmm
 implicit none
 
 !real, parameter:: rf = 0.0295, beta = 0.2114, erp = 0.0791
-real :: rf = 0.0295, erp = 0.0496
+real :: rf , erp 
 real :: beta 
 
-
-real, parameter :: roe = 0.1968, dcov = 2.1, eps0 = 8.98
+real :: roe, dcov
+real :: eps0 
+!real, parameter :: roe = 0.1968, dcov = 2.1, eps0 = 8.98
 
 !real omega, rho
 !real a0, theta1, g1, h1
 
 ! sensible defaults
 !real, parameter::  n = 5.0
-integer :: n = 5
-
+integer :: n 
+character :: dummy
 
 
 
 ! intermediate calculations
-real, parameter :: theta1 = 1 - 1/dcov,  g1 = roe *theta1
+real :: theta1, g1
 real :: gt, r
 integer :: i
 real ct
@@ -28,8 +29,20 @@ real p1, pt0, p0
 
 real :: h1
 real :: divs(1:100) ! dividends
+read (*,*) dummy
+read (*,*) roe
+read (*,*) dcov
+read (*,*) beta
+read (*,*) rf
+read (*,*) erp
+read (*,*) eps0
+read (*,*) n
+
+theta1 = 1-1/dcov
+g1 = roe *theta1
+
 ! set these intitial values
-beta = 0.2114
+!beta = 0.2114
 !beta = 1.2
 h1 = rf + beta * erp
 
