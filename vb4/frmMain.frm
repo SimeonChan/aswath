@@ -2,15 +2,15 @@ VERSION 4.00
 Begin VB.Form frmMain 
    Caption         =   "Aswath"
    ClientHeight    =   7965
-   ClientLeft      =   2010
-   ClientTop       =   4350
+   ClientLeft      =   3060
+   ClientTop       =   10365
    ClientWidth     =   5685
    Height          =   8535
-   Left            =   1890
+   Left            =   2940
    LinkTopic       =   "Form1"
    ScaleHeight     =   7965
    ScaleWidth      =   5685
-   Top             =   3900
+   Top             =   9915
    Width           =   5925
    Begin VB.TextBox txtN 
       Height          =   285
