@@ -28,7 +28,10 @@ real ct
 real p1, pt0, p0
 
 real :: h1
-real :: divs(1:100) ! dividends
+
+! for testing purposes
+real :: eps(1:100), divs(1:100) ! dividends
+
 read (*,*) dummy
 read (*,*) roe
 read (*,*) dcov
@@ -62,9 +65,13 @@ ct = rf + erp
 pt0 = eps0 * r**n * (1+gt)/ct
 
 ! calculate pt0 the hard way
+eps(n) = divs(n) / (1-theta1)
 !div(n) = div(n-1) / (1-theta1) * (1-gt/ct)
-!for i = int(n)+1, 100
+do i = n+1, 100
+	eps(i) = eps(i-1) * (1+gt)
 !	divs(i) = divs(i-1) * 
+enddo
+! div = eps * (1- thetat) TODO
 
 p0 = p1+pt0
 print *, 'p1', p1, 'pt0', pt0, 'p0', p0
