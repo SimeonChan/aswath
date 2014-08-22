@@ -1,9 +1,12 @@
 .PHONY: all clean
 
+all: mmm tesla
+
 mmm : mmm.f90
 	gfortran mmm.f90 -o mmm
 
-all: mmm tesla
+tesla : tesla.f90
+	gfortran tesla.f90 -o tesla
 
 clean : 
-	rm -f *.exe *~
+	rm -f mmm tesla  *.mod *.exe *~
