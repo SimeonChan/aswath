@@ -13,7 +13,47 @@ This article describes the 3M model that Aswath Damodaran uses in ``The Little B
 \section{Standard Formulae}
 
 Presented below are a number of standard formulae. It is true that
+
+\begin{equation}
+\sum\limits_{k=0}^{n-1} a r^k = a \frac{ 1-r^n} {1-r}
+\label{eq_sf1}
+\end{equation}
+
+\begin{equation}
+\sum\limits_{k=0}^{n} a r^k = a r \frac{ 1-r^n} {1-r}
+\label{eq_sf2}
+\end{equation}
+
+
 Given an interest rate, $i$, (e.g. use $i=0.05$ for 5\%), then
 
+\begin{equation} r = 1 + i, \end{equation} 
+(in our example, we would set $r=1.05$) would be the correct number to use in the forumla above.
+
+Furthermore, the present value of a perpetuity, with each payment of $c$ being received at the end of each year is given by
+\begin{equation}V =\frac{c}{ i}. \end{equation} 
+
+If $\omega$ is the dividend cover, then $\theta$, the retention ratio, is given by
+\begin{equation}\theta =1 - \frac{1}{ \omega}. \end{equation} 
+
+\section{Cost of capital}
+
+The cost of capital for the \emph{company}, $h_1$, which is the hurdle rate, is given by
+
+\begin{equation}
+h_1 = \frac{M_e c_e + M_d c_d}{M_E + M_d}
+\label{eq_cc1a}
+\end{equation}
+
+where $c_e$ is the cost of equity, $c_d$ is the after-tax cost of debt, $M_e$ is the market value of equity and $M_d$ is the market value of debt. So $h_1$ is the weighted average of the cost of equity and debt by market value.
+
+Now,
+\begin{equation}
+c_e = r_f + \beta p,
+\end{equation}
+
+where $r_f$ is the risk-free rate, $\beta$ is the \emph{unlevered} beta of the firm, and $p$ is the equity risk premium.
+
+So, for example, if we take $r_f = 3.72\% $,
 
 \end{document}

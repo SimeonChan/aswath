@@ -30,7 +30,7 @@ real p1, pt0, p0
 real :: h1
 
 ! for testing purposes
-real :: eps(1:100), divs(1:100) ! dividends
+real :: eps(1:100), divs(1:100), df(1:100), pts(1:100) ! dividends
 
 read (*,*) dummy
 read (*,*) roe
@@ -65,13 +65,22 @@ ct = rf + erp
 pt0 = eps0 * r**n * (1+gt)/ct
 
 ! calculate pt0 the hard way
-eps(n) = divs(n) / (1-theta1)
+eps(n) = divs(n) / (1-theta1) * (1+h1) **n
 !div(n) = div(n-1) / (1-theta1) * (1-gt/ct)
+df(n) = 1
 do i = n+1, 100
 	eps(i) = eps(i-1) * (1+gt)
+	df(i) = df(i-1) /(1+ct)
 !	divs(i) = divs(i-1) * 
 enddo
-! div = eps * (1- thetat) TODO
+print *, 'terminal eps', eps(n+1: n+6)
+divs = eps * (1- gt/ct)
+print *, 'divs in terminal', divs(n+1:n+6)
+df = df / (1+h1) ** n
+print *, "discount factors terminal", df(n+1:n+6)
+pts = divs * df 
+print *, "pts terminal", pts(n+1:n+6)
+print *, 'pt0 as a sum', sum(pts(n+1:100))
 
 p0 = p1+pt0
 print *, 'p1', p1, 'pt0', pt0, 'p0', p0

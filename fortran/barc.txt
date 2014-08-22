@@ -1,0 +1,9 @@
+MMM    MODEL
+0.1    ROE
+2.7    DCOV
+1.0    BETA
+0.0295 RF
+0.0496 ERP
+16.7   EPS0
+5      N
+dated 03-jul-2014
