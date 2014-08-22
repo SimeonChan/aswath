@@ -13,4 +13,6 @@ The 3m 2007 can be downloaded from http://media.corporate-ir.net/media_files/iro
 For reading DVI files, I recommend using Yap on Windows 7
 
 
+Ocatve seems particularly useful for matrix manipulation, as in the tesla case
+
 Created 03-May-2014
