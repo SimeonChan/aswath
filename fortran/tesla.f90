@@ -15,7 +15,7 @@ use pars
 !real, parameter :: RGR2 = 0.0275 ! terminal growth rate (usually risk-free rate)!real rgr
 
 real :: revs(0:N2) ! revenues
-real :: rgr(0:N2) ! revenue growth rates
+real :: rgr(0:11) ! revenue growth rates
 real :: eom(0:N2) ! EBIT operating margin
 real :: eoi(0:N2) ! EBIT operating income
 real :: tr(0:N2) ! tax rate

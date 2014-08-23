@@ -13,6 +13,11 @@ The 3m 2007 can be downloaded from http://media.corporate-ir.net/media_files/iro
 For reading DVI files, I recommend using Yap on Windows 7
 
 
-Ocatve seems particularly useful for matrix manipulation, as in the tesla case
+Octave seems particularly useful for matrix manipulation, as in the tesla case
+
+The general rule seems to be:
+- Maxima (a Mathematica clone) for symbolic mathematics
+- Octave (a Matlab clone) for numerical computing
+
 
 Created 03-May-2014
