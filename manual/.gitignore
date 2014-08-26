@@ -1,6 +1,9 @@
 *~
 *.aux
 *.dvi
+*.idx
+*.ilg
+*.ind
 *.log
 *.pdf
 *.gz

@@ -5,6 +5,8 @@
 
 \usepackage{makeidx}
 
+\makeindex
+
 \begin{document}
 \maketitle
 
@@ -35,7 +37,7 @@ Given an interest rate, $i$, (e.g. use $i=0.05$ for 5\%), then
 Furthermore, the present value of a perpetuity, with each payment of $c$ being received at the end of each year is given by
 \begin{equation}V =\frac{c}{ i}. \end{equation} 
 
-If $\omega$ is the dividend cover, then $\theta$, the \index{retention ratio}, is given by
+If $\omega$ is the dividend cover, then $\theta$, the \index{retention ratio}\textbf{retention ratio}, is given by
 \begin{equation}\theta =1 - \frac{1}{ \omega}. \end{equation} 
 
 \section{Cost of capital}
@@ -56,7 +58,13 @@ c_e = r_f + \beta p,
 
 where $r_f$ is the risk-free rate, $\beta$ is the \emph{unlevered} beta of the firm, and $p$ is the equity risk premium.
 
-So, for example, if we take $r_f = 3.72\% $,
+So, for example, if we take $r_f = 3.72\% $, $\beta=1.29$, $p=5\% $, then
+\begin{equation}
+c_e = 3.72\% + 1.29 \times 4 \% = 9.16 \%
+\end{equation}
+
+
+Damodaran uses the 10-year treasury bond rate for the \index{risk-free rate}risk-free rate. For $\beta$, he uses \emph{unlevered} betas for the sector in which the company operates. If a company operates in several sectors, then a weighted average across sectors should be used.
 
 \printindex
 \end{document}
