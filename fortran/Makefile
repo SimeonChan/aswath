@@ -1,6 +1,6 @@
 .PHONY: all clean
 
-BINS = mmm sal tesla
+BINS = mmm sal tesla twitter
 
 all: $(BINS)
 
@@ -13,5 +13,8 @@ sal : sal.f90
 tesla : tesla.f90
 	gfortran tesla.f90 -o tesla
 
+% : %.f90 common.f90
+	gfortran $< -o $@
+
 clean : 
-	rm -f $(BINS)  *.mod *.exe *~
+	rm -f $(BINS)  a.out *.mod *.exe *~
