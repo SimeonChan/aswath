@@ -1,13 +1,17 @@
 ! Reproduction of Aswath's Twitter valuation for Aug 2014
 ! http://www.stern.nyu.edu/~adamodar/pc/blog/TwitterAug2014.xls
 ! agrees as at 01-Sep-2014
+
 program twitter
-real, dimension(0:11) :: rgr, rev, eom, eoi, taxr, eat, nol, rin, fcf, coc, cdf, pvf
+use aswath
+!real, dimension(0:11) :: rgr, rev, eom, eoi, taxr, eat, nol, rin, fcf, coc, cdf, pvf
 real :: icap, nolu
 
-call hello() ! test call of common import
-data rgr /1, 5 * 1.45, 6 * 1.025/
-call linin(rgr(5:10))
+!call hello() ! test call of common import
+!rgr(0) = 1.0
+!rgr =  (/ 1, 1.45 (i, 1:5), 1.025  (i, 1:6) /)
+call assign1(rgr, 1.45, 1.025)
+!call linin(rgr(5:10))
 write (*, 2001) "RGRS=",  rgr
 !call cumprod(rgr)
 !rev = 973.93 * rgr
@@ -17,12 +21,13 @@ call cumprod(rev)
 write (*, 2000) "REVS=", rev
 eom(0) = -33.94 / rev(0)
 eom(10:11) = 0.25
-call linin(eom(0:10))
+call linin(eom, 0, 10)
 write (*, 2001) "EOMS=", eom
 eoi = rev * eom
 write (*, 2000) "EOIS=", eoi
-data taxr / 6 * 0.30 , 6 * 0.40 /
-call linin(taxr(5:10))
+!data taxr / 6 * 0.30 , 6 * 0.40 /
+call assign2(taxr, 0.3, 0.4)
+!call linin(taxr(5:10))
 write (*, 2000) "TAXR=", taxr
 
 
@@ -43,14 +48,16 @@ write (*, 2000) "RINS=", rin
 !print *, "RINS TERMINAL IS WRONG"
 fcf = eat - rin
 write (*, 2000) "FCFS=", fcf
-data coc / 1.0, 6 * 1.109, 5 * 1.08 /
-call linin(coc(5:10))
+!data coc / 1.0, 6 * 1.109, 5 * 1.08 /
+call assign1(coc, 1.109, 1.08)
+!call linin(coc, 5, 10)
 write(*, 2001) "COCS=", coc
 cdf = coc
 call cumprod(cdf)
 cdf = 1/ cdf
 write (*, 2001) "CDFS=", cdf
 pvf = fcf * cdf
+write (*, 2000) "PVFS=", pvf
 
 tva = fcf(11) / (coc(11) - rgr(11)) ! terminal value
 print *, "Terminal Value = ", tva
@@ -78,32 +85,7 @@ print *, "SP as % val    = ", ppv * 100.0
 2001 format(A5, 12F10.4)
 
 
-!end program
+!contains
 
-contains
-include "common.f90"
-subroutine linin(a)
-real, dimension(:) :: a
-real :: delta
-j = ubound(a, 1)
-delta = (a(j) - a(1))/(j-1)
-forall(i=2:j-1) a(i) = a(1) + delta*(i-1)
-end subroutine
-
-subroutine cumprod(a)
-real, dimension(:) :: a
-j = ubound(a,1)
-do 100 i = 2, j
-a(i) = a(i-1) * a(i)
-100 continue
-end subroutine
-
-subroutine cumsum(a)
-real, dimension(:) :: a
-j = ubound(a,1)
-do 100 i = 2, j
-a(i) = a(i-1) + a(i)
-100 continue
-end subroutine
 
 end program

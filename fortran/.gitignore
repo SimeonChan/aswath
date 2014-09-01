@@ -1,6 +1,7 @@
 a.out
 mmm
-pars.mod
+*.mod
+*.o
 sal
 tesla
 twitter
