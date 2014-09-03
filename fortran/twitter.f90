@@ -4,53 +4,65 @@
 
 program twitter
 use aswath
-!real, dimension(0:11) :: rgr, rev, eom, eoi, taxr, eat, nol, rin, fcf, coc, cdf, pvf
-real :: icap, nolu
+real :: icap, nolu, scr, spr, nsh
 
-!call hello() ! test call of common import
-!rgr(0) = 1.0
-!rgr =  (/ 1, 1.45 (i, 1:5), 1.025  (i, 1:6) /)
-call assign1(rgr, 1.45, 1.025)
-!call linin(rgr(5:10))
+namelist /pars/ rgr_0, rgr_t, rev, eoi_0, eom_t, taxr_0, taxr_t, scr, nol_0, &
+     roc_t, coc_0, coc_t, cash, voo, debt, nsh, spr
+namelist /output/ rgr, rev
+
+!namelist /test/ n
+!read (5, nml=test)
+!write(6, nml = test)
+
+read(5, nml = pars)
+!read(5, nml = parb)
+!call assign1(rgr, 1.45, 1.025)
+call assign1(rgr, rgr_0, rgr_t)
+!rev(0) = 973.93
+eom(0) = eoi_0 / rev(0)
+eom(10:11) = eom_t
+call assign2(taxr, taxr_0, taxr_t)
+!scr = 2.5
+nol(0) = nol_0
+!roc_t = 0.12
+call assign1(coc, coc_0, coc_t)
+ncash = cash - debt
+!voo = 1381.39
+!nsh = 595.61
+!spr = 42.94
+
+
+
+
 write (*, 2001) "RGRS=",  rgr
-!call cumprod(rgr)
-!rev = 973.93 * rgr
-rev = rgr
-rev(0) = 973.93
+rev(1:11) = rgr(1:11)
 call cumprod(rev)
 write (*, 2000) "REVS=", rev
-eom(0) = -33.94 / rev(0)
-eom(10:11) = 0.25
+write (*, nml = output)
 call linin(eom, 0, 10)
 write (*, 2001) "EOMS=", eom
 eoi = rev * eom
 write (*, 2000) "EOIS=", eoi
-!data taxr / 6 * 0.30 , 6 * 0.40 /
-call assign2(taxr, 0.3, 0.4)
-!call linin(taxr(5:10))
+
 write (*, 2000) "TAXR=", taxr
 
 
-nol(0) = 0.0 ! always non-negative
+!nol(0) = 0.0 ! always non-negative
+if(nol(0).lt.0) call abort
 do i= 1, 11
    nolu = merge(eoi(i), min(eoi(i), nol(i-1)), eoi(i).lt.0)
    eat(i) = eoi(i) - (eoi(i) - nolu) * taxr(i)
    nol(i) = nol(i-1) - nolu
-   rin(i) = (rev(i) - rev(i-1)) / 2.5
+   rin(i) = (rev(i) - rev(i-1)) / scr
 end do
-!icap = 2857.0 + sum(rin(1:10))
-print *, "rgr(11)", rgr(11)
-rin(11) = (rgr(11)-1) / 0.12 *eat(11)
-print *, "icap=", icap
+rin(11) = (rgr(11)-1) / roc_t *eat(11)
+!print *, "icap=", icap
 write (*, 2000) "NOLS=", nol
 write (*, 2000) "EATS=", eat
 write (*, 2000) "RINS=", rin
-!print *, "RINS TERMINAL IS WRONG"
 fcf = eat - rin
 write (*, 2000) "FCFS=", fcf
-!data coc / 1.0, 6 * 1.109, 5 * 1.08 /
-call assign1(coc, 1.109, 1.08)
-!call linin(coc, 5, 10)
+
 write(*, 2001) "COCS=", coc
 cdf = coc
 call cumprod(cdf)
@@ -67,15 +79,18 @@ pvd = sum(pvf(1:10))
 print *, "PV (CF decade) = ", pvd
 pvs = pvt + pvd
 print *, "PV Sum         = ", pvs
-voe = pvs + 2097.04 - 783.76
+voe = pvs + ncash
 print *, "Val of equity  = ", voe
-voo = 1381.39
+!voo = 1381.39
+print *, "Val of options = ", voo
 voc = voe - voo
 print *, "Val of common  = ", voc
-nsh = 595.61
+print *, "Num shares     = ", nsh
+!nsh = 595.61
 vps = voc/nsh
 print *, "Est val per shr= ", vps
-spr = 42.94
+print *, "Share price    = ", spr
+!spr = 42.94
 ppv = spr / vps
 print *, "SP as % val    = ", ppv * 100.0
 

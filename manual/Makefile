@@ -1,5 +1,5 @@
 .PHONY : all clean
-BUILD = aswath.idx aswath.ilg aswath.ind
+BUILD = aswath.idx aswath.ilg aswath.ind aswath.toc
 
 all : aswath.dvi
 

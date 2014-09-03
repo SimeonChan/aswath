@@ -5,6 +5,8 @@ module aswath
 real, dimension(0:11) :: rgr, rev, eom, eoi, taxr, eat, nol, rin, fcf
 real, dimension(0:11) :: coc, cdf, pvf
 
+real :: nol_0 = 0.0
+
 !public :: linin
 
 contains

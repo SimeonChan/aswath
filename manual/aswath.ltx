@@ -14,6 +14,8 @@
 This article describes the 3M model that Aswath Damodaran uses in ``The Little Book of Valuation''.
 \end{abstract}
 
+\tableofcontents{}
+
 \section{Standard Formulae}
 
 Presented below are a number of standard formulae. It is true that
@@ -65,6 +67,25 @@ c_e = 3.72\% + 1.29 \times 4 \% = 9.16 \%
 
 
 Damodaran uses the 10-year treasury bond rate for the \index{risk-free rate}risk-free rate. For $\beta$, he uses \emph{unlevered} betas for the sector in which the company operates. If a company operates in several sectors, then a weighted average across sectors should be used.
+
+The cost of debt is the risk free rate, $r_f$, plus a default spread $d$, adjusted for tax:
+\begin{equation}
+c_d = ( r_f + d) (1 - M_t)
+\end{equation}
+If available, $d$ can be obtained from bond rating agencies. More likely, a rating is not available, and must be synthasised instead. Rating agencies use a variety of financial rations, but Damodaran uses interest coverage, defined as the ratio of operating income to interest expeses, to be a simple and reliable heuristic. Using the interest coverage, it is possible to look up a default spread for a similar company.
+
+The marginal tax rate, $M_t$, is used, as opposed to the tax rate as a whole, because debt saves the company tax at the margin. For 3M, Damodaran calculates
+\begin{equation}
+c_d = (3.72\% + 0.75 \% ) (1- 0.040) = 2.91\%
+\end{equation}
+The marginal tax rate is taken for 2008, where the federal corporation tax rate is 35\%, and local taxes add 5\% to this.
+
+Using values of $M_e = \$57b$, $M_d=\$5.3b$, and substiuting the values for $c_d$ and $c_e$ obtain above into equation (\ref{eq_cc1a}) gives
+\begin{equation}
+h_1 = (9.16\% \times 57 + 2.91\% \times 5.3) / (57 + 5.3) = 8.63\%
+\end{equation}
+
+
 
 \printindex
 \end{document}
