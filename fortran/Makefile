@@ -1,6 +1,6 @@
 .PHONY: all clean
 
-BINS = mmm sal tesla vdgfs
+BINS = mmm sal vdgfs
 
 all: $(BINS)
 
@@ -16,8 +16,8 @@ mmm : mmm.f90
 sal : sal.f90
 	gfortran sal.f90 -o sal
 
-tesla : tesla.f90
-	gfortran tesla.f90 -o tesla
+#tesla : tesla.f90
+#	gfortran tesla.f90 -o tesla
 
 vdgfs.o : vdgfs.f90 aswath.mod
 	gfortran -c $< 

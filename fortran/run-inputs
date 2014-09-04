@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+rm outputs/*
+for f in inputs/*
+do
+    #echo $f
+    fout=`basename -s .dat $f`
+    fout1="outputs/$fout.out"
+    vdgfs < $f > $fout1
+#    diff $fout1 verified/$fout.out
+done
+
+diff outputs verified
