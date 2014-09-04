@@ -19,5 +19,6 @@ The general rule seems to be:
 - Maxima (a Mathematica clone) for symbolic mathematics
 - Octave (a Matlab clone) for numerical computing
 
+* My blog article dated 04-Sep-2014  which should give some clues on the usage of this repo: http://wp.me/p2eZvw-Nc
 
 Created 03-May-2014
