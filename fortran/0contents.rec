@@ -1,0 +1,12 @@
+# -*- mode: rec -*-
+
+File: vdgfs.f90
+Long: valuation model, driver, general model, FCFF, simple
+Url: http://www.stern.nyu.edu/~adamodar/pc/fcfeginzu2014.xls
+Desc:
++ A complete FCFF model that allows for changing margins and has
++ default assumptions built in (to protect you from inconsistent
++ assumptions). If you want a quick, all-in-one model to value a company
++ with relatively few inputs, try this.
+Examples: twitter, tesla, facebook in 2014
+Category: all-in-one valuation models

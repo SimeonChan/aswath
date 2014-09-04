@@ -4,10 +4,10 @@
 
 program twitter
 use aswath
-real :: icap, nolu, scr, spr, nsh
+real :: icap, nolu, scr, spr, nsh, pfail = 0.0, fproc = 0.0
 
 namelist /pars/ rgr_0, rgr_t, rev, eoi_0, eom_t, taxr_0, taxr_t, scr, nol_0, &
-     roc_t, coc_0, coc_t, cash, voo, debt, nsh, spr
+     roc_t, coc_0, coc_t, pfail, fproc, cash, voo, debt, nsh, spr
 namelist /output/ rgr, rev
 
 !namelist /test/ n
@@ -38,7 +38,7 @@ write (*, 2001) "RGRS=",  rgr
 rev(1:11) = rgr(1:11)
 call cumprod(rev)
 write (*, 2000) "REVS=", rev
-write (*, nml = output)
+!write (*, nml = output)
 call linin(eom, 0, 10)
 write (*, 2001) "EOMS=", eom
 eoi = rev * eom
@@ -79,7 +79,14 @@ pvd = sum(pvf(1:10))
 print *, "PV (CF decade) = ", pvd
 pvs = pvt + pvd
 print *, "PV Sum         = ", pvs
-voe = pvs + ncash
+print *, "Prob failure   = ", pfail
+print *, "Failure proceed= ", fproc
+voa = pvs * (1.0-pfail) + fproc * pfail
+print *, "Val Oper Ass   = ", voa
+
+
+ncash = cash - debt
+voe = voa + ncash
 print *, "Val of equity  = ", voe
 !voo = 1381.39
 print *, "Val of options = ", voo
