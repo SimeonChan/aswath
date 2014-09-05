@@ -1,5 +1,5 @@
 PROGRAM mmm
-implicit none
+!implicit none
 
 !real, parameter:: rf = 0.0295, beta = 0.2114, erp = 0.0791
 real :: rf , erp 
@@ -32,14 +32,42 @@ real :: h1
 ! for testing purposes
 real :: eps(1:100), divs(1:100), df(1:100), pts(1:100) ! dividends
 
-read (*,*) dummy
-read (*,*) roe
-read (*,*) dcov
-read (*,*) beta
-read (*,*) rf
-read (*,*) erp
-read (*,*) eps0
-read (*,*) n
+!!$read (*,*) dummy
+!!$read (*,*) roe
+!!$read (*,*) dcov
+!!$read (*,*) beta
+!!$read (*,*) rf
+!!$read (*,*) erp
+!!$read (*,*) eps0
+!!$read (*,*) n
+
+
+a0 = 3586
+theta1 = 0.30
+g1 = 0.075
+h1 = 0.0863
+
+r = (1+g1)/(1+h1)
+p1 = a0 * (1- theta1) * r * (1- r**5) / (1-r)
+print *, "p1 = ", p1
+
+gt = 0.03
+ct = 0.0676
+!a6 = a0 * (1 + g1) ** 5 * (1+ gt)
+pt0 = a0 * r ** 5 * (1 + gt) /ct
+print *, "pt0 = ", pt0
+voa = p1 + pt0
+print *, "voa = ", voa
+cash = 2475
+cross = 778
+debt = 5297
+voo = 1216
+voe = voa + cash + cross - debt-voo
+print *, "voe = ", voe
+print *, "Agrees closely with Dark p 52, and Little p 56"
+stop
+
+
 
 theta1 = 1-1/dcov
 g1 = roe *theta1
