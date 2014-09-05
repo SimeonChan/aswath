@@ -1,6 +1,6 @@
 .PHONY: all clean
 
-BINS = mmm sal vdgfs
+BINS = grow2 mmm sal vdgfs
 
 all: $(BINS)
 
@@ -33,6 +33,9 @@ twitter : twitter.o aswath.o
 
 %.o : %.f90 
 	gfortran -c $< 
+
+grow2 : grow2.o
+	gfortran grow2.o -o grow2
 
 clean : 
 	rm -f $(BINS)  a.out *.mod  *.o *.exe *~

@@ -85,7 +85,8 @@ Using values of $M_e = \$57b$, $M_d=\$5.3b$, and substiuting the values for $c_d
 h_1 = (9.16\% \times 57 + 2.91\% \times 5.3) / (57 + 5.3) = 8.63\%
 \end{equation}
 
-\section{Growth phase}
+\section{Two-stage growth model using 3M as an example}
+\subsection{Growth phase}
 
 Let $P_1$ be thepresent value of the capital in the compnay's growth phase. Then, from the standard formula
 \begin{equation}
@@ -105,6 +106,24 @@ giving
 \begin{equation}
 P_1 = 3586 \times 0.7 + 0.9896 (1-0.9896^5)/(1-0.9896) = 12165
 \end{equation}
+
+\subsection{Terminal Value}
+
+Let $P_{t,6}$ be the terminal value at the end of year 5. Then 
+\begin{equation}
+P_{t,6} = \frac{A_6 (1 - \theta_t)}{c_t - g_t}
+\end{equation}
+where $A_6$ is the after-tax operating income in year 6, $\theta_t$ is the re-investment rate in stable growth (i.e. terminal phase), $c_t= 6.7\%$ is the cost of capital in the terminal phase, $g_t=3\%$ is the stable growth rate. Now
+\begin{equation}
+A_6 = A_0 (1 + g_1) ^ 5 (1+ g_t) .
+\end{equation}
+Set
+\begin{equation}
+\theta_t = \frac{g_t}{c_t}
+\end{equation}
+reflecting the assumption that there will be no excess returns in stable growth. In other words, the return on capital will equal the cost of capital, $c_t$.
+
+
 
 
 \begin{thebibliography}{1}
