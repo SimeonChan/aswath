@@ -112,6 +112,7 @@ P_1 = 3586 \times 0.7 + 0.9896 (1-0.9896^5)/(1-0.9896) = 12165
 Let $P_{t,6}$ be the terminal value at the end of year 5. Then 
 \begin{equation}
 P_{t,6} = \frac{A_6 (1 - \theta_t)}{c_t - g_t}
+\label{eq15a}
 \end{equation}
 where $A_6$ is the after-tax operating income in year 6, $\theta_t$ is the re-investment rate in stable growth (i.e. terminal phase), $c_t= 6.7\%$ is the cost of capital in the terminal phase, $g_t=3\%$ is the stable growth rate. Now
 \begin{equation}
@@ -120,8 +121,18 @@ A_6 = A_0 (1 + g_1) ^ 5 (1+ g_t) .
 Set
 \begin{equation}
 \theta_t = \frac{g_t}{c_t}
+\label{eq15b}
 \end{equation}
 reflecting the assumption that there will be no excess returns in stable growth. In other words, the return on capital will equal the cost of capital, $c_t$.
+
+Substitute equation (\ref{eq15b}) into (\ref{eq15a}), giving
+\begin{equation}
+P_{t,6} = \frac{A_6}{c_t}.
+\end{equation}
+Let $P_{t,0}$ denote the present value of the terminal value at the end of year 5. Thus
+\begin{equation}
+P_{t, 0} = \frac{P_{t,6}}{(1+h_1)^5} = \frac{A_6}{c_t (1+h_1)^5} = A_0 r^5 \frac{(1+g_t)}{c_t}
+\end{equation}
 
 
 
