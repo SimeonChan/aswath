@@ -32,14 +32,6 @@ real :: h1
 ! for testing purposes
 real :: eps(1:100), divs(1:100), df(1:100), pts(1:100) ! dividends
 
-!!$read (*,*) dummy
-!!$read (*,*) roe
-!!$read (*,*) dcov
-!!$read (*,*) beta
-!!$read (*,*) rf
-!!$read (*,*) erp
-!!$read (*,*) eps0
-!!$read (*,*) n
 
 
 a0 = 3586
@@ -53,7 +45,7 @@ print *, "p1 = ", p1
 
 gt = 0.03
 ct = 0.0676
-!a6 = a0 * (1 + g1) ** 5 * (1+ gt)
+
 pt0 = a0 * r ** 5 * (1 + gt) /ct
 print *, "pt0 = ", pt0
 voa = p1 + pt0

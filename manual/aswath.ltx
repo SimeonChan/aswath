@@ -3,6 +3,7 @@
 \date{\today}
 \documentclass[12pt]{article}
 
+\usepackage{amsmath}
 \usepackage{makeidx}
 
 \makeindex
@@ -42,9 +43,19 @@ Furthermore, the present value of a perpetuity, with each payment of $c$ being r
 If $\omega$ is the dividend cover, then $\theta$, the \index{retention ratio}\textbf{retention ratio}, is given by
 \begin{equation}\theta =1 - \frac{1}{ \omega}. \end{equation} 
 
-\section{Cost of capital}
 
-The cost of capital for the \emph{company}, $h_1$, which is the hurdle rate, is given by
+
+
+
+
+
+
+
+
+\section{Two-stage growth model using 3M as an example}
+\subsection{Cost of capital}
+
+The cost of capital for the \emph{company}, \index{H1 ($h_1$)}$h_1$, which is the hurdle rate, is given by
 
 \begin{equation}
 h_1 = \frac{M_e c_e + M_d c_d}{M_E + M_d}
@@ -85,7 +96,7 @@ Using values of $M_e = \$57b$, $M_d=\$5.3b$, and substiuting the values for $c_d
 h_1 = (9.16\% \times 57 + 2.91\% \times 5.3) / (57 + 5.3) = 8.63\%
 \end{equation}
 
-\section{Two-stage growth model using 3M as an example}
+
 \subsection{Growth phase}
 
 Let $P_1$ be thepresent value of the capital in the compnay's growth phase. Then, from the standard formula
@@ -99,6 +110,8 @@ A_0 = 3586
 \begin{equation}
 \theta_1 = 30\%
 \end{equation}
+
+\index{H1 ($h_1$)}
 \begin{equation}
 r = \frac{1+g_1}{1+h_1} = \frac{1.075}{1.0863} = 0.9896
 \end{equation}
@@ -133,6 +146,43 @@ Let $P_{t,0}$ denote the present value of the terminal value at the end of year 
 \begin{equation}
 P_{t, 0} = \frac{P_{t,6}}{(1+h_1)^5} = \frac{A_6}{c_t (1+h_1)^5} = A_0 r^5 \frac{(1+g_t)}{c_t}
 \end{equation}
+
+In our example,
+\begin{equation}
+P_{t,0} = 3586 \times 0.9896^5 \times 1.03 / 0.0676 = 51856.
+\end{equation}
+
+\subsection{Putting it all together}
+
+Our goal is to computer $V_c$, the value of equity in common stock. We take $V_o$, the value of the operating assets, which is the PV of the discounted cashflows, i.e.
+\begin{equation}
+V_o = P_1 + P_{t,0}
+\end{equation}
+and adjust for vairous factors, $V_f$, the value of the company as a \emph{firm}, is given by
+\begin{equation}
+V_f = V_o + a_c + a_x
+\end{equation}
+where $a_c$ is the value of cash and marketable securities, and $a_x$ is the value of the cross-holdings in other companies.
+
+Subtract the debt outstanding, $a_d$, to give the value of equity:
+\begin{equation}
+V_e = V_f - a_d.
+\end{equation}
+Finally, estimate a value, $a_e$, for equity options that have been granted over time to managers that are still outstanding, to give
+\begin{equation}
+V_c = V_e - a_e.
+\end{equation}
+In expanded form, this is:
+\begin{equation}
+\boxed{V_c = \overbrace{P_1 + P_{t,0}}^{V_o} + a_c + a_x - a_d - a_e}.
+\end{equation}
+
+In the 3M example, $a_c = 2475$, $a_x=778$, $a_d=5297$, $a_e=1216$ and $V_o = 12165 + 51856=64021$, giving
+\begin{equation}
+V_c = 64021 + 2475 + 778 - 5297 - 1216 = 60761.
+\end{equation}
+
+
 
 
 
