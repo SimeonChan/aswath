@@ -5,6 +5,8 @@
 
 \usepackage{amsmath}
 \usepackage{makeidx}
+\usepackage{float}
+\restylefloat{table}
 
 \makeindex
 
@@ -182,6 +184,23 @@ In the 3M example, $a_c = 2475$, $a_x=778$, $a_d=5297$, $a_e=1216$ and $V_o = 12
 V_c = 64021 + 2475 + 778 - 5297 - 1216 = 60761.
 \end{equation}
 
+
+\subsection{Reconciliation}
+
+
+\begin{table}[H]
+\begin{tabular}{l r l}
+Line item & 2007 & Per accounts\\
+Non-operating income & 981m \\
+Interest expense & 210m \\
+Pretax Income & 6.12B & Operating income 6193m page 4 \\
+Provision for Income Taxes & 1.92B  & 1964m page 40 \\
+Minority Interest & 55m & 55m page 18
+\end{tabular}
+Per accounts consolidated income starts on page 40
+\end{table}
+
+My estimate of operating income is $6.12B + 0.210B - 0.981B = 5.349B$. Tax on operating income is therefore $\frac{5.349}{6.12} \times 1.96 = 1.713B$. My estimate of operating income after taxes is therefore $3.636B (=5.349B - 1.713B)$, cf Aswath of 3.586B \cite[p. 42]{little}.
 
 
 

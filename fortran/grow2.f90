@@ -6,6 +6,9 @@ call go2('SMWH', 107.0, 2.30, 0.661, 31.0) !=> 3695
 call go2('TSCO', 2353.0, 2.99, 0.0915, -6597.0) ! => 16069
 call go2('SN. ', 490.9, 2.81, 0.20, -153.3) ! => 6247
 call go2('PAY ', 44.3, 1.50, 0.427, 41.6) ! => 714
+call go2('DPLM', b0 = 48.9, dcov = 2.0, roce = 0.264, ncash = 8.0)
+call go2('CGS ', 21.6, 2.5, 0.154, 209.4-181.7)
+call go2('HIK', 245.8, 7.09, 0.305, -158.0)
 
 fadj = 2476 + 778 - 5297 - 1215
 call go1("MMM ", a0 = 3586.0 , theta1 = 0.3, g1 = 0.075, ncash = fadj, h1 = 0.0863, gt = 0.03, ct = 0.0676)
@@ -30,7 +33,7 @@ end subroutine
 subroutine go2(epic, b0, dcov, roce, ncash, h1, gt, ct, taxr)
 implicit none
 character epic(*)
-real :: b0 ! operating profits before tax
+real :: b0 ! operating profits BEFORE tax
 real :: a0, dcov, roce, ncash, g1, p1, pt0, r, theta1, voa, voe
 real, optional :: h1, gt, ct, taxr
 
