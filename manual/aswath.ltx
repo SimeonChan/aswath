@@ -4,11 +4,15 @@
 \documentclass[12pt]{article}
 
 \usepackage{amsmath}
+\usepackage[toc]{glossaries}
 \usepackage{makeidx}
 \usepackage{float}
 \restylefloat{table}
 
 \makeindex
+\makeglossaries
+
+\input{glossary.ltx}
 
 \begin{document}
 \maketitle
@@ -55,7 +59,22 @@ If $\omega$ is the dividend cover, then $\theta$, the \index{retention ratio}\te
 
 
 \section{Two-stage growth model using 3M as an example}
-\subsection{Cost of capital}
+
+The ultimate aim is to compute $V_c$, the value of quity of common stock.
+
+\subsection{$g_1$, Growth rate during growth phase}
+
+$g_1$ can be specified explcitly, or implied by the ROCE and retention ratio/di\
+vidend cover. In the latter case:
+\begin{equation}
+g_1 = R_1  \theta _1 \equiv R_1 \left( 1- \frac{1}{\omega_1} \right).
+\end{equation}
+
+
+
+
+
+\subsection{$h_1$, Cost of capital during growth phase}
 
 The cost of capital for the \emph{company}, \index{H1 ($h_1$)}$h_1$, which is the hurdle rate, is given by
 
@@ -99,9 +118,9 @@ h_1 = (9.16\% \times 57 + 2.91\% \times 5.3) / (57 + 5.3) = 8.63\%
 \end{equation}
 
 
-\subsection{Growth phase}
+\subsection{$P_1$, Present value of company during growth phase}
 
-Let $P_1$ be thepresent value of the capital in the compnay's growth phase. Then, from the standard formula
+Let $P_1$ be the present value of the capital in the company's growth phase. Then, from the standard formula
 \begin{equation}
 P_1 = A_0 (1- \theta_1) r\frac{1-r^n}{1-r}
 \end{equation}
@@ -154,7 +173,7 @@ In our example,
 P_{t,0} = 3586 \times 0.9896^5 \times 1.03 / 0.0676 = 51856.
 \end{equation}
 
-\subsection{Putting it all together}
+\subsection{$V_c$, Value of equity in common stock}
 
 Our goal is to computer $V_c$, the value of equity in common stock. We take $V_o$, the value of the operating assets, which is the PV of the discounted cashflows, i.e.
 \begin{equation}
@@ -206,10 +225,13 @@ On page 50,
 \begin{equation}
 \text{FCFF}_0 = \text{ATOI} \times \text{ Reinv rate} = 3586 \times 0.7 = 2510.2
 \end{equation}
-From page 54, $g_1 = 7.5\%$, the growth rate of FCFF during phase 1, and $h_1 = 8.63\%$ is the cost of cpital during phase 1.
+From page 54, $g_1 = 7.5\%$, the growth rate of FCFF during phase 1, and $h_1 = 8.63\%$ is the cost of capital during phase 1.
 
 
 
+%\printglossary[type=main,title={Glossary},toctitle={Glossary}]
+\glsaddall
+\printglossaries
 
 
 \begin{thebibliography}{1}

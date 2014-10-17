@@ -3,10 +3,15 @@ BUILD = aswath.idx aswath.ilg aswath.ind aswath.toc
 
 all : aswath.dvi aswath.pdf
 
+aswath.idx : aswath.ltx glossary.ltx
+	latex aswath.ltx
+
 aswath.ind : aswath.idx
 	makeindex aswath.idx
 
 aswath.dvi : aswath.ind aswath.ltx
+	latex aswath.ltx
+	makeglossaries aswath
 	latex aswath.ltx
 
 aswath.pdf : aswath.dvi
