@@ -18,7 +18,6 @@ def floatm(x):
     return float(x)
 
 def calc(d):
-    #print(d['Name'])
     del d['']
 
     dcov = d['Div Cover']
@@ -36,9 +35,9 @@ def calc(d):
 def upside(d): return d['upside']
 
 def main():
-    inp = mython.csvmc.read_dict('~/Downloads/stocko.csv')
+    inp = mython.csvmc.read_dict('screen20141018.csv')
     calcs = map(calc, inp)
-    calcs = filter(lambda x: upside(x) > 1.5, calcs)
+    #calcs = filter(lambda x: upside(x) > 1.5, calcs)
     calcs = list(calcs)
     calcs.sort(key = upside)
     prin(len(calcs))
