@@ -3,7 +3,7 @@ BUILD = aswath.idx aswath.ilg aswath.ind aswath.toc
 
 all : aswath.dvi aswath.pdf
 
-aswath.idx : aswath.ltx glossary.ltx
+aswath.idx : aswath.ltx glossary.ltx opscale.ltx
 	latex aswath.ltx
 
 aswath.ind : aswath.idx

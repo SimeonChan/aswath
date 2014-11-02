@@ -12,11 +12,10 @@
 \usepackage{float}
 \restylefloat{table}
 
+
 \makeindex
 %\thispagestyle{myheadings}
 \makeglossaries
-
-
 \input{glossary.ltx}
 
 
@@ -34,6 +33,8 @@
 \let\ps@plain\ps@fancy
 \makeatother
 
+
+%\usepackage{threeparttable}
 
 \begin{document}
 %\pagestyle{myheadings}
@@ -165,7 +166,7 @@ giving
 P_1 = 3586 \times 0.7 \times 0.9896 (1-0.9896^5)/(1-0.9896) = 12165
 \end{equation}
 
-\subsection{Terminal Value}
+\subsection{$P_{t,0}$, Present value of terminal value}
 
 Let $P_{t,6}$ be the terminal value at the end of year 5. Then 
 \begin{equation}
@@ -258,6 +259,28 @@ From page 54, $g_1 = 7.5\%$, the growth rate of FCFF during phase 1, and $h_1 = 
 I wrote an article \cite{blog201410} that calculated upside from estimates of DCF. a listing of the code is below. The default values used were: $c_t = h_1 = 7.91\%$, $g_t = 2.95\%$, and tax rate $\tau = 21\%$.
 
 \lstinputlisting[language=Python]{screen20141018.py}
+
+\section{Opscale table}
+
+\begin{table}[H]
+\caption{These default values are extracted at 02 November 2014. $\tau$ is the tax rate. It is assumed that $\beta = 1$, so that $c_t = h_1 = r_f + 1 \times p$.}
+\begin{tabular}{l | r}
+\hline
+$r_f$ & 2.95\% \\
+$p$ & 4.96\% \\
+$c_t$, $h_1$  & 7.91\% \\
+$g_t$, $r_f$ & 2.95\% \\
+$\tau$ &  21\% \\ \hline
+\end{tabular}
+\end{table}
+
+\input{opscale.ltx}
+
+Table \ref{tbl:opscale} gives the scaling that must be made to (pre-tax) operating profits to obtain the value of the common stock prior to any adjustments. The ROCE are in columns in percentages, and the rows are dividend covers.
+
+\textbf{Example} A company has an operating profit of \pounds443m, a dividend cover of 2.2, a ROCE of 25\%, and net cash of \pounds100m. Calculate the value of capital under standard conditions.
+
+\textbf{Solution} Looking at table \ref{tbl:opscale}, we see that the scaling factor is 15.418. So the value of capital for the company is $443 \times 15.418 + 100 = \pounds6930m$.
 
 
 
