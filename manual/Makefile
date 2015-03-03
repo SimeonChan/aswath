@@ -1,7 +1,9 @@
-.PHONY : all clean
+.PHONY : all clean install
+BASE = aswath
 BUILD = aswath.idx aswath.ilg aswath.ind aswath.toc
+PDF = $(BASE).pdf
 
-all : aswath.dvi aswath.pdf
+all : aswath.dvi $(PDF)
 
 aswath.idx : aswath.ltx glossary.ltx opscale.ltx
 	latex aswath.ltx
@@ -14,8 +16,11 @@ aswath.dvi : aswath.ind aswath.ltx
 	makeglossaries aswath
 	latex aswath.ltx
 
-aswath.pdf : aswath.dvi
+$(PDF) : aswath.dvi
 	dvipdfm aswath.dvi
 
 clean : 
 	rm -f $(BUILD) *.aux *.dvi *.log	
+
+install : $(PDF)
+	cp $(PDF) $(WWW_PDF_DIR)
